@@ -1,0 +1,28 @@
+/* .clearButton {
+  padding: 10px;
+  margin-top:15px;
+  border-radius:5px;
+  font-size:20px;
+  }
+body, button {
+  font-family:monospace;
+  text-align:center;
+}
+h3 {
+  font-size:26px;
+}
+p {
+  font-size:17px;
+}
+ul {
+  font-size:30px;
+  list-style-type:none;
+}
+body {
+background: rgb(184,174,255);
+background: linear-gradient(294deg, rgb(160, 148, 255) 0%, rgb(255, 255, 255) 100%);
+} */
+ul {
+  font-size:30px;
+  list-style-type:none;
+}
