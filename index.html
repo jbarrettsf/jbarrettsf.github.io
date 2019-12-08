@@ -1,89 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>ToDo</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Jacob Barrett</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
 
-<!--	</script>-->
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
 
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-
-	</script>
-</head>
-
-<body class="container">
-  
-	<script src="script.js"></script>
-  <div class="row">
-    <div class="col-sm-6 text-center">
-      <h3>add item:</h3>
-      <input id="add"/>
-      <br>
-      <button class="btn btn-primary" id="addButton">add</button>
-    </div>
-
-    <div class="col-sm-6 text-center">
-      <h3>remove item:</h3>
-      <input id="remove"/>
-      <br>
-      <button class="btn btn-secondary" id="removeButton">remove</button>
-    </div>
-
-    <div class="col-sm-6 text-center">
-      <h3>replace item:</h3>
-      <span>replace</span>
-      <br/>
-      <input id="original">
-      <br/>
-      <span>with</span>
-      <br/>
-      <input id="replaced">
-      <br>
-      <button class="btn btn-secondary" id="replaceButton">replace</button>
-    </div>
-    <div class="col text-center">
-    <br>
-    <button class="btn btn-primary" id="resetButton">reset</button>
-
-    </div>
-  </div>
-  <div>
-    <ul class="row" id="items">
-    </ul>
-  </div>
-
-  <script>
-    $("#addButton").click(function(){
-      addItem($('#add').val())
-        $('#add').val("")
-        readList()
-      // $("#value").toggle();
-    })
-    $("#removeButton").click(function(){
-        remove($('#remove').val())
-        $('#remove').val("")
-        readList()
-    })
-    $("#replaceButton").click(function(){
-        update($('#original').val(),$("#replaced").val())
-        $('#original').val("")
-        $('#replaced').val("")
-        readList()
-    })
-    $("#resetButton").click(function(){
-        clear()
-        readList()
-    })
-  </script>
-  </body>
+        </script>
+    </head>
+    <body>
+        <div class="background">
+        <div  class="heading">
+            <h1 class="text-center">
+                Jacob Barrett
+            </h1>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col text-center">
+                    <button class="btn btn-secondary">
+                        About
+                    </button>
+                </div>
+                <div class="dropdown col text-center">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Projects
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/toDo/index.html">To Do</a>
+                        <!--
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        -->
+                    </div>  
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        </div>
+    </body>
+    
 </html>
