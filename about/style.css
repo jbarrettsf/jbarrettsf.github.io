@@ -1,8 +1,14 @@
-.background {
+
+.body {
     background-color:yellow;
     height:100vh;
+    
 }
 html {
+    background-color: yellow;
+}
+
+.background {
     background-color: yellow;
 }
 
@@ -22,31 +28,21 @@ html {
     
 }
 
-.about-button {
-    width:260px;
-    height:90px;
-    font-size: 3.5em;
-    font-family:"Helvetica Neue";
-    font-weight:900;
-    border-style: hidden;
-    border-radius:8px;
-    background-color:black;
-    color:yellow;
-    margin:10px;
+.about-me {
+    text-align:center;
+    margin-top:10px;
+    font-weight: 800;
+    font-size:7em;
+    
 }
 
-.about-button:hover {
-    width:270px;
-    height:100px;
-    font-size:4em;
+.about-text {
+    padding:15px;
+    padding-top:0px;
+    padding-bottom:0px;
+    font-weight:400; 
+    text-align: left;
 }
-
-.projects-button:hover {
-    width:280px;
-    height:100px;
-    font-size:4em;
-}
-
 .projects-button {
     width:260px;
     height:90px;
@@ -58,4 +54,6 @@ html {
     background-color:black;
     color:yellow;
     margin:10px;
+    margin-top:0px;
+    text-align: center;
 }
