@@ -57,3 +57,13 @@ html {
     margin-top:0px;
     text-align: center;
 }
+
+.projects-button:hover {
+    width:280px;
+    height:100px;
+    font-size:4em;
+}
+#dropdown ul {
+    list-style-type: none;
+    text-align: center;
+}
