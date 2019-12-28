@@ -1,7 +1,6 @@
 .background {
     background-color:yellow;
     height:100vh;
-<<<<<<< HEAD
 }
 html {
     background-color: yellow;
@@ -50,29 +49,6 @@ html {
 
 .projects-button {
     width:260px;
-=======
-    
-}
-
-.heading {
-    margin-top:10%;
-    color:black;
-}
-
-.main-text {
-    font-size:7em;
-    font-weight:900;
-    text-align:center;
-}
-
-.navbar-brand {
-    font-weight:900;
-    
-}
-
-.about-button {
-    width:230px;
->>>>>>> 76df66f3fb2512c792ce5878706453c46b7010a8
     height:90px;
     font-size: 3.5em;
     font-family:"Helvetica Neue";
@@ -81,9 +57,5 @@ html {
     border-radius:8px;
     background-color:black;
     color:yellow;
-<<<<<<< HEAD
     margin:10px;
 }
-=======
-}
->>>>>>> 76df66f3fb2512c792ce5878706453c46b7010a8
