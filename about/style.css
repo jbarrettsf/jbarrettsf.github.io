@@ -2,7 +2,7 @@
 .body {
     background-color:yellow;
     height:100vh;
-    
+
 }
 html {
     background-color: yellow;
@@ -25,7 +25,7 @@ html {
 
 .navbar-brand {
     font-weight:900;
-    
+
 }
 
 .about-me {
@@ -34,14 +34,14 @@ html {
     font-weight: 800;
     font-size:7em;
     line-height:1.3em;
-    
+
 }
 
 .about-text {
     padding:15px;
     padding-top:0px;
     padding-bottom:0px;
-    font-weight:400; 
+    font-weight:400;
     text-align: left;
 }
 .projects-button {
