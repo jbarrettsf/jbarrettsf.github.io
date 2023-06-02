@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://paleshoddyruntimes.thebosssssssss.repl.co/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Medication Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./Medication Tracker_files/marx.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .wide-row {
+      font-weight: bold;
+      font-size: 18px;
+      padding: 10px 0;
+    }
+    .medication-entry {
+      margin-bottom: 10px;
+    }
+    .medication-time {
+      margin-right: 10px;
+    }
+    .medication-name {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    .medication-name-tylenol {
+      color: green;
+    }
+    .medication-name-advil {
+      color: blue;
+    }
+    .medication-name-rizatriptan {
+      color: #aa8e00; /* Darker yellow */
+    }
+    .medication-name-caffeine {
+      color: red;
+    }
+    .medication-name-lexapro {
+      color: purple;
+    }
+    .medication-name-probiotic {
+      color: orange;
+    }
+    .medication-name-migrelief {
+      color: pink;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .custom-caffeine-input {
+      width: 80px;
+      margin-right: 8px;
+    }
+    .custom-caffeine-button {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  </style>
+<style data-emotion="css"></style><style type="text/css"> 
+      @import url('https://fonts.bunny.net/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+      </style></head>
+<body>
+  <h1>Medication Tracker</h1>
+
+  <div class="button-group">
+    <button class="button" onclick="takeMedication(&#39;Probiotic&#39;, &#39;1 pill&#39;)">Take Probiotic (1 pill)</button>
+    <button class="button" onclick="takeMedication(&#39;Lexapro&#39;, &#39;5mg&#39;)">Take Lexapro (5mg)</button>
+    <button class="button" onclick="takeMedication(&#39;Tylenol&#39;, &#39;2 pills&#39;)">Take Tylenol (2 pills)</button>
+    <button class="button" onclick="takeMedication(&#39;Advil&#39;, &#39;2 pills&#39;)">Take Advil (2 pills)</button>
+    <button class="button" onclick="takeMedication(&#39;Migrelief&#39;, &#39;1 pill&#39;)">Take Migrelief (1 pill)</button>
+    <button class="button" onclick="takeMedication(&#39;Rizatriptan&#39;, &#39;1 pill&#39;)">Take Rizatriptan (1 pill)</button>
+    <button class="button" onclick="takeMedication(&#39;Caffeine&#39;, &#39;140mg&#39;)">Take Yerba Mate (140mg)</button>
+    <button class="button" onclick="takeMedication(&#39;Caffeine&#39;, &#39;200mg&#39;)">Take Cold Brew (200mg)</button>
+    <button class="button" onclick="takeMedication(&#39;Caffeine&#39;, &#39;60mg&#39;)">Take Green Tea/Misc (60mg)</button>
+    <br>
+    <label for="custom-caffeine-input">Custom Caffeine (mg):</label>
+    <input type="number" id="custom-caffeine-input" class="custom-caffeine-input">
+    <button class="button custom-caffeine-button" onclick="takeCustomCaffeine()">Add</button>
+  </div>
+
+  <div id="medication-log"></div>
+
+  <script>
+    
+    var medicationLog = {};
+
+    function updateMedicationLog(time, drug, dosage) {
+      var date = getDate(time);
+      if (!medicationLog[date]) {
+        medicationLog[date] = [];
+      }
+      medicationLog[date].push({ time: time, drug: drug, dosage: dosage });
+      renderMedicationLog();
+    }
+
+    function getDate(dateTimeString) {
+      var date = new Date(dateTimeString);
+      return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+    }
+
+    function renderMedicationLog() {
+      var logContainer = document.getElementById('medication-log');
+      logContainer.innerHTML = '';
+
+      for (var date in medicationLog) {
+        var entries = medicationLog[date];
+
+        var wideRow = document.createElement('div');
+        wideRow.className = 'wide-row';
+        wideRow.textContent = date;
+        logContainer.appendChild(wideRow);
+
+        for (var i = 0; i < entries.length; i++) {
+          var entry = entries[i];
+
+          var entryRow = document.createElement('div');
+          entryRow.className = 'medication-entry';
+          logContainer.appendChild(entryRow);
+
+          var timeSpan = document.createElement('span');
+          timeSpan.className = 'medication-time';
+          timeSpan.textContent = formatTime(entry.time);
+          entryRow.appendChild(timeSpan);
+
+          var drugSpan = document.createElement('span');
+          drugSpan.className = 'medication-name medication-name-' + getMedicationClass(entry.drug.toLowerCase());
+          drugSpan.textContent = entry.drug;
+          entryRow.appendChild(drugSpan);
+
+          var dosageSpan = document.createElement('span');
+          dosageSpan.textContent = entry.dosage;
+          entryRow.appendChild(dosageSpan);
+        }
+      }
+    }
+
+    function getCurrentTime() {
+      var now = new Date();
+      return now.toISOString();
+    }
+
+    function formatTime(dateTimeString) {
+      var date = new Date(dateTimeString);
+      return date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      });
+    }
+
+    function takeMedication(drug, dosage) {
+      var time = getCurrentTime();
+      updateMedicationLog(time, drug, dosage);
+    }
+
+    function takeCustomCaffeine() {
+      var time = getCurrentTime();
+      var customCaffeineInput = document.getElementById('custom-caffeine-input');
+      var customCaffeineDosage = customCaffeineInput.value;
+      if (customCaffeineDosage !== '') {
+        updateMedicationLog(time, 'Caffeine', customCaffeineDosage + 'mg');
+        customCaffeineInput.value = '';
+      }
+    }
+
+    function getMedicationClass(drug) {
+      switch (drug) {
+        case 'tylenol':
+          return 'tylenol';
+        case 'advil':
+          return 'advil';
+        case 'rizatriptan':
+          return 'rizatriptan';
+        case 'caffeine':
+          return 'caffeine';
+        case 'lexapro':
+          return 'lexapro';
+        case 'probiotic':
+          return 'probiotic';
+        case 'migrelief':
+          return 'migrelief';
+        default:
+          return '';
+      }
+    }
+
+    function clearMedicationLog() {
+      medicationLog = {};
+      renderMedicationLog();
+    }
+
+    function init() {
+      renderMedicationLog();
+    }
+
+    app.use(function(req, res, next) {
+  res.setHeader('Cache-Control', 'max-age=3600');
+  next();
+});
+    init();
+  </script>
+
+
+<div id="c65a4f68-1aab-4648-b0dd-0d25bd67f004-quickmenu"></div><div id="91082943-1256-44ff-a340-08a34a460a8c-loading-animation"><div data-testid="wrapper" class="_loading_overlay_wrapper css-79elbk workflow-extension-loading-overlay inactive"></div></div></body></html>
